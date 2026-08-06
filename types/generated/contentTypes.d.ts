@@ -543,6 +543,61 @@ export interface ApiCeoProfileCeoProfile extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiMentoringRequestMentoringRequest
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'mentoring_requests';
+  info: {
+    displayName: 'Mentoring Request';
+    pluralName: 'mentoring-requests';
+    singularName: 'mentoring-request';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    consideredOptions: Schema.Attribute.Text;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    desiredClasses: Schema.Attribute.JSON;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::mentoring-request.mentoring-request'
+    > &
+      Schema.Attribute.Private;
+    mainProblemCategory: Schema.Attribute.Enumeration<
+      [
+        'Chi\u1EBFn l\u01B0\u1EE3c',
+        'T\u0103ng tr\u01B0\u1EDFng',
+        'Marketing',
+        'Nh\u00E2n s\u1EF1',
+        'Ph\u00E2n quy\u1EC1n',
+        'Qu\u1EA3n l\u00FD & v\u1EADn h\u00E0nh',
+        'T\u00E0i ch\u00EDnh',
+        'AI & chuy\u1EC3n \u0111\u1ED5i s\u1ED1',
+        'S\u1EA3n ph\u1EA9m',
+        'Qu\u1ED1c t\u1EBF h\u00F3a',
+        'Ph\u00E1p l\u00FD',
+        'Kh\u00E1c',
+      ]
+    >;
+    mainQuestionForMentor: Schema.Attribute.Text;
+    otherProblemCategory: Schema.Attribute.String;
+    problemDescription: Schema.Attribute.Text;
+    problemImportance: Schema.Attribute.Text;
+    publishedAt: Schema.Attribute.DateTime;
+    triedSolutions: Schema.Attribute.Text;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    user: Schema.Attribute.Relation<
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
+  };
+}
+
 export interface PluginContentReleasesRelease
   extends Struct.CollectionTypeSchema {
   collectionName: 'strapi_releases';
@@ -1059,6 +1114,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::ceo-profile.ceo-profile': ApiCeoProfileCeoProfile;
+      'api::mentoring-request.mentoring-request': ApiMentoringRequestMentoringRequest;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

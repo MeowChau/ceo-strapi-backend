@@ -1,0 +1,58 @@
+{
+  "kind": "collectionType",
+  "collectionName": "mentoring_requests",
+  "info": {
+    "singularName": "mentoring-request",
+    "pluralName": "mentoring-requests",
+    "displayName": "Mentoring Request"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "desiredClasses": {
+      "type": "json"
+    },
+    "mainProblemCategory": {
+      "type": "enumeration",
+      "enum": [
+        "Chiến lược",
+        "Tăng trưởng",
+        "Marketing",
+        "Nhân sự",
+        "Phân quyền",
+        "Quản lý & vận hành",
+        "Tài chính",
+        "AI & chuyển đổi số",
+        "Sản phẩm",
+        "Quốc tế hóa",
+        "Pháp lý",
+        "Khác"
+      ]
+    },
+    "otherProblemCategory": {
+      "type": "string"
+    },
+    "problemDescription": {
+      "type": "text"
+    },
+    "problemImportance": {
+      "type": "text"
+    },
+    "triedSolutions": {
+      "type": "text"
+    },
+    "consideredOptions": {
+      "type": "text"
+    },
+    "mainQuestionForMentor": {
+      "type": "text"
+    },
+    "user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    }
+  }
+}
