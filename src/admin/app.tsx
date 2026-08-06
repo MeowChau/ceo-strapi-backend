@@ -69,9 +69,9 @@ export default {
         }
         /* Enlarge logo on left menu sidebar */
         nav img[src*="combined"] {
-          height: 50px !important;
+          height: 45px !important;
           max-width: 100% !important;
-          width: 100% !important;
+          width: auto !important;
           object-fit: contain !important;
         }
         /* Allow the nav brand container to expand its height */
