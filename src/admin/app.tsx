@@ -37,8 +37,8 @@ export default {
           primary500: '#e60000', // Red branding
           primary600: '#cc0000',
           primary700: '#002b5e', // Dark blue branding
-          buttonPrimary500: '#002b5e', // Buttons in blue
-          buttonPrimary600: '#001a3c',
+          buttonPrimary500: '#e60000', // Buttons in red
+          buttonPrimary600: '#cc0000',
         },
       },
       dark: {
@@ -48,8 +48,8 @@ export default {
           primary500: '#e60000', // Red branding
           primary600: '#cc0000',
           primary700: '#002b5e', // Dark blue branding
-          buttonPrimary500: '#002b5e', // Buttons in blue
-          buttonPrimary600: '#001a3c',
+          buttonPrimary500: '#e60000', // Buttons in red
+          buttonPrimary600: '#cc0000',
         }
       }
     },
