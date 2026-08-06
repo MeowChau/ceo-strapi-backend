@@ -69,14 +69,16 @@ export default {
         }
         /* Enlarge logo on left menu sidebar */
         nav img[src*="combined"] {
-          height: 60px !important;
-          max-width: 200px !important;
-          width: auto !important;
+          height: 50px !important;
+          max-width: 100% !important;
+          width: 100% !important;
+          object-fit: contain !important;
         }
         /* Allow the nav brand container to expand its height */
         nav [href^="/admin"] {
           height: auto !important;
-          min-height: 70px;
+          min-height: 60px;
+          padding: 8px !important;
         }
       `;
       document.head.appendChild(style);
