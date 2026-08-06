@@ -58,5 +58,28 @@ export default {
   },
   bootstrap(app: StrapiApp) {
     console.log(app);
+    if (typeof document !== 'undefined') {
+      const style = document.createElement('style');
+      style.innerHTML = `
+        /* Enlarge logo on auth page */
+        main img[src*="combined"] {
+          height: 100px !important;
+          max-width: none !important;
+          width: auto !important;
+        }
+        /* Enlarge logo on left menu sidebar */
+        nav img[src*="combined"] {
+          height: 60px !important;
+          max-width: 200px !important;
+          width: auto !important;
+        }
+        /* Allow the nav brand container to expand its height */
+        nav [href^="/admin"] {
+          height: auto !important;
+          min-height: 70px;
+        }
+      `;
+      document.head.appendChild(style);
+    }
   },
 };
