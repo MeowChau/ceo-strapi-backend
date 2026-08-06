@@ -26,7 +26,8 @@ export default {
         const actions = [
           'api::mentoring-request.mentoring-request.create',
           'api::mentoring-request.mentoring-request.find',
-          'api::mentoring-request.mentoring-request.findOne'
+          'api::mentoring-request.mentoring-request.findOne',
+          'api::mentoring-request.mentoring-request.me'
         ];
 
         for (const action of actions) {
