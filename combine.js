@@ -1,14 +1,18 @@
 const sharp = require('sharp');
 
 async function run() {
-    const ptit = await sharp('../source/public/assets/img/logo/logoPTIT.png').resize(null, 150).toBuffer();
-    const vlgm = await sharp('../source/public/assets/img/logo/logo-vlgm-transparent.png').resize(null, 150).toBuffer();
+    const ptit = await sharp('../source/public/assets/img/logo/logoPTIT.png')
+        .trim()
+        .resize(120, 120, { fit: 'contain', background: {r:0,g:0,b:0,alpha:0} })
+        .toBuffer();
+        
+    const vlgm = await sharp('../source/public/assets/img/logo/logo-vlgm-transparent.png')
+        .trim()
+        .resize(120, 120, { fit: 'contain', background: {r:0,g:0,b:0,alpha:0} })
+        .toBuffer();
 
-    const ptitInfo = await sharp(ptit).metadata();
-    const vlgmInfo = await sharp(vlgm).metadata();
-
-    const width = ptitInfo.width + vlgmInfo.width + 20;
-    const height = Math.max(ptitInfo.height, vlgmInfo.height);
+    const width = 260;
+    const height = 120;
 
     await sharp({
         create: {
@@ -20,11 +24,11 @@ async function run() {
     })
     .composite([
         { input: ptit, left: 0, top: 0 },
-        { input: vlgm, left: ptitInfo.width + 20, top: 0 }
+        { input: vlgm, left: 140, top: 0 }
     ])
     .png()
     .toFile('src/admin/extensions/combined-logo.png');
 
-    console.log('Done!');
+    console.log('Done combine!');
 }
 run().catch(console.error);
