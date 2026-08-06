@@ -16,7 +16,7 @@ export default {
    * This gives you an opportunity to set up your data model,
    * run jobs, or perform some special logic.
    */
-  async bootstrap({ strapi }) {
+  async bootstrap({ strapi }: { strapi: any }) {
     try {
       const authenticatedRole = await strapi.db.query('plugin::users-permissions.role').findOne({
         where: { type: 'authenticated' },
