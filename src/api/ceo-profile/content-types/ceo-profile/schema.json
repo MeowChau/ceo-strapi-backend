@@ -1,0 +1,62 @@
+{
+  "kind": "collectionType",
+  "collectionName": "ceo_profiles",
+  "info": {
+    "singularName": "ceo-profile",
+    "pluralName": "ceo-profiles",
+    "displayName": "Ceo Profile"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "managementExperience": {
+      "type": "enumeration",
+      "enum": [
+        "Dưới 1 năm",
+        "Từ 1-5 năm",
+        "Từ 5-10 năm",
+        "Trên 10 năm"
+      ]
+    },
+    "industry": {
+      "type": "string"
+    },
+    "foundedYear": {
+      "type": "integer"
+    },
+    "annualRevenue": {
+      "type": "enumeration",
+      "enum": [
+        "Chưa có doanh thu",
+        "Dưới 5 tỷ VND",
+        "Từ 5 tỷ đến 20 tỷ VND",
+        "Từ 20 tỷ đến 100 tỷ VND",
+        "Từ 100 tỷ đến 500 tỷ VND",
+        "Trên 500 tỷ VND"
+      ]
+    },
+    "employeeCount": {
+      "type": "enumeration",
+      "enum": [
+        "Không quá 10 người",
+        "Từ 11-50 người",
+        "Từ 51-100 người",
+        "Từ 101-200 người",
+        "Trên 200 người"
+      ]
+    },
+    "equity": {
+      "type": "decimal"
+    },
+    "companyType": {
+      "type": "string"
+    },
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    }
+  }
+}
