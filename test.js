@@ -14,21 +14,9 @@ async function run() {
   const jwt = regData.jwt;
   const userId = regData.user.id;
 
-  const profRes = await fetch('http://localhost:1337/api/ceo-profiles', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${jwt}` },
-    body: JSON.stringify({
-      data: {
-        managementExperience: 'Từ 1-5 năm',
-        industry: 'Dịch vụ',
-        foundedYear: 2020,
-        annualRevenue: 'Dưới 5 tỷ VND',
-        employeeCount: 'Từ 11-50 người',
-        equity: 10.5,
-        companyType: 'Công ty TNHH 1 thành viên',
-        users_permissions_user: { connect: [userId] }
-      }
-    })
+  const profRes = await fetch('http://localhost:1337/api/ceo-profiles?populate=*', {
+    method: 'GET',
+    headers: { 'Authorization': `Bearer ${jwt}` }
   });
   const profData = await profRes.json();
   console.log(profRes.status, JSON.stringify(profData, null, 2));
