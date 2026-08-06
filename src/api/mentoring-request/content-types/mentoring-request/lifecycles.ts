@@ -1,5 +1,5 @@
 export default {
-  beforeCreate(event) {
+  beforeCreate(event: any) {
     const ctx = strapi.requestContext.get();
     
     // Automatically link the currently logged-in user to this mentoring request
