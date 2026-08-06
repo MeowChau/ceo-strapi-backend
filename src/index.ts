@@ -16,5 +16,37 @@ export default {
    * This gives you an opportunity to set up your data model,
    * run jobs, or perform some special logic.
    */
-  bootstrap(/* { strapi }: { strapi: Core.Strapi } */) {},
+  async bootstrap({ strapi }) {
+    try {
+      const authenticatedRole = await strapi.db.query('plugin::users-permissions.role').findOne({
+        where: { type: 'authenticated' },
+      });
+
+      if (authenticatedRole) {
+        const actions = [
+          'api::mentoring-request.mentoring-request.create',
+          'api::mentoring-request.mentoring-request.find',
+          'api::mentoring-request.mentoring-request.findOne'
+        ];
+
+        for (const action of actions) {
+          const permission = await strapi.db.query('plugin::users-permissions.permission').findOne({
+            where: { role: authenticatedRole.id, action },
+          });
+
+          if (!permission) {
+            await strapi.db.query('plugin::users-permissions.permission').create({
+              data: {
+                role: authenticatedRole.id,
+                action,
+              },
+            });
+            strapi.log.info(`Granted permission ${action} to authenticated role.`);
+          }
+        }
+      }
+    } catch (err) {
+      strapi.log.error('Failed to grant permissions in bootstrap:', err);
+    }
+  },
 };
