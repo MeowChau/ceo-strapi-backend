@@ -531,6 +531,7 @@ export interface ApiCeoProfileCeoProfile extends Struct.CollectionTypeSchema {
         'Tr\u00EAn 10 n\u0103m',
       ]
     >;
+    ownerEmail: Schema.Attribute.Email;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
