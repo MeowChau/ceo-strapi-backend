@@ -61,12 +61,6 @@ export default {
     if (typeof document !== 'undefined') {
       const style = document.createElement('style');
       style.innerHTML = `
-        /* Enlarge logo on auth page */
-        main img[src*="combined"] {
-          height: 100px !important;
-          max-width: none !important;
-          width: auto !important;
-        }
         /* Enlarge logo on left menu sidebar */
         nav img[src*="combined"] {
           height: 45px !important;
