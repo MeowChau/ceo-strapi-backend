@@ -9,7 +9,13 @@ const config: Core.Config.Middlewares = [
   'strapi::query',
   'strapi::body',
   'strapi::session',
-  'strapi::favicon',
+  {
+    name: 'strapi::favicon',
+    config: {
+      path: './public/favicon.ico',
+      maxAge: 86400000
+    },
+  },
   'strapi::public',
 ];
 
