@@ -20,12 +20,7 @@
       "type": "string"
     },
     "desc": {
-      "type": "customField",
-      "customField": "plugin::ckeditor.CKEditor",
-      "options": {
-        "output": "HTML",
-        "preset": "standard"
-      }
+      "type": "blocks"
     },
     "image": {
       "type": "media",
