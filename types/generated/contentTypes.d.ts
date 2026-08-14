@@ -496,14 +496,15 @@ export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    desc: Schema.Attribute.RichText &
-      Schema.Attribute.CustomField<
-        'plugin::ckeditor5.CKEditor',
-        {
-          output: 'HTML';
-          preset: 'standard';
-        }
-      >;
+    desc: Schema.Attribute.RichText;
+    fontFamily: Schema.Attribute.Enumeration<
+      ['Inter', 'Roboto', 'Times New Roman', 'Arial']
+    > &
+      Schema.Attribute.DefaultTo<'Inter'>;
+    fontSize: Schema.Attribute.Enumeration<
+      ['size-14px', 'size-16px', 'size-18px', 'size-20px', 'size-22px']
+    > &
+      Schema.Attribute.DefaultTo<'size-16px'>;
     image: Schema.Attribute.Media<'images'>;
     imageUrl: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
@@ -633,14 +634,15 @@ export interface ApiEventEvent extends Struct.CollectionTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     date: Schema.Attribute.String;
-    desc: Schema.Attribute.RichText &
-      Schema.Attribute.CustomField<
-        'plugin::ckeditor5.CKEditor',
-        {
-          output: 'HTML';
-          preset: 'standard';
-        }
-      >;
+    desc: Schema.Attribute.RichText;
+    fontFamily: Schema.Attribute.Enumeration<
+      ['Inter', 'Roboto', 'Times New Roman', 'Arial']
+    > &
+      Schema.Attribute.DefaultTo<'Inter'>;
+    fontSize: Schema.Attribute.Enumeration<
+      ['size-14px', 'size-16px', 'size-18px', 'size-20px', 'size-22px']
+    > &
+      Schema.Attribute.DefaultTo<'size-16px'>;
     image: Schema.Attribute.Media<'images'>;
     imageUrl: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
