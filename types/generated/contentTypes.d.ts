@@ -496,15 +496,13 @@ export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    desc: Schema.Attribute.RichText;
-    fontFamily: Schema.Attribute.Enumeration<
-      ['Inter', 'Roboto', 'Times New Roman', 'Arial']
-    > &
-      Schema.Attribute.DefaultTo<'Inter'>;
-    fontSize: Schema.Attribute.Enumeration<
-      ['size-14px', 'size-16px', 'size-18px', 'size-20px', 'size-22px']
-    > &
-      Schema.Attribute.DefaultTo<'size-16px'>;
+    desc: Schema.Attribute.RichText &
+      Schema.Attribute.CustomField<
+        'plugin::ckeditor5.CKEditor',
+        {
+          preset: 'defaultHtml';
+        }
+      >;
     image: Schema.Attribute.Media<'images'>;
     imageUrl: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
@@ -634,20 +632,20 @@ export interface ApiEventEvent extends Struct.CollectionTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     date: Schema.Attribute.String;
-    desc: Schema.Attribute.RichText;
-    fontFamily: Schema.Attribute.Enumeration<
-      ['Inter', 'Roboto', 'Times New Roman', 'Arial']
-    > &
-      Schema.Attribute.DefaultTo<'Inter'>;
-    fontSize: Schema.Attribute.Enumeration<
-      ['size-14px', 'size-16px', 'size-18px', 'size-20px', 'size-22px']
-    > &
-      Schema.Attribute.DefaultTo<'size-16px'>;
+    desc: Schema.Attribute.RichText &
+      Schema.Attribute.CustomField<
+        'plugin::ckeditor5.CKEditor',
+        {
+          preset: 'defaultHtml';
+        }
+      >;
     image: Schema.Attribute.Media<'images'>;
     imageUrl: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::event.event'> &
       Schema.Attribute.Private;
+    location: Schema.Attribute.String;
+    mentor: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     title: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
@@ -708,6 +706,40 @@ export interface ApiMentoringRequestMentoringRequest
       'manyToOne',
       'plugin::users-permissions.user'
     >;
+  };
+}
+
+export interface ApiStatisticStatistic extends Struct.SingleTypeSchema {
+  collectionName: 'statistics';
+  info: {
+    description: 'C\u00E1c con s\u1ED1 th\u1ED1ng k\u00EA tr\u00EAn trang ch\u1EE7 v\u00E0 gi\u1EDBi thi\u1EC7u';
+    displayName: 'Th\u1ED1ng k\u00EA (S\u1ED1 li\u1EC7u)';
+    pluralName: 'statistics';
+    singularName: 'statistic';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    coreCeoCount: Schema.Attribute.String & Schema.Attribute.DefaultTo<'50+'>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    digitalAccounts: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'1000+'>;
+    eventsPerYear: Schema.Attribute.String & Schema.Attribute.DefaultTo<'5+'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::statistic.statistic'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    regularCeoCount: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'200+'>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
   };
 }
 
@@ -1231,6 +1263,7 @@ declare module '@strapi/strapi' {
       'api::course.course': ApiCourseCourse;
       'api::event.event': ApiEventEvent;
       'api::mentoring-request.mentoring-request': ApiMentoringRequestMentoringRequest;
+      'api::statistic.statistic': ApiStatisticStatistic;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

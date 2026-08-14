@@ -23,8 +23,7 @@
       "type": "customField",
       "customField": "plugin::ckeditor5.CKEditor",
       "options": {
-        "output": "HTML",
-        "preset": "standard"
+        "preset": "defaultHtml"
       }
     },
     "image": {
@@ -36,6 +35,12 @@
       ]
     },
     "imageUrl": {
+      "type": "string"
+    },
+    "location": {
+      "type": "string"
+    },
+    "mentor": {
       "type": "string"
     }
   }

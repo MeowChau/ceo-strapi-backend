@@ -1,0 +1,32 @@
+{
+  "kind": "singleType",
+  "collectionName": "statistics",
+  "info": {
+    "singularName": "statistic",
+    "pluralName": "statistics",
+    "displayName": "Thống kê (Số liệu)",
+    "description": "Các con số thống kê trên trang chủ và giới thiệu"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "regularCeoCount": {
+      "type": "string",
+      "default": "200+"
+    },
+    "coreCeoCount": {
+      "type": "string",
+      "default": "50+"
+    },
+    "digitalAccounts": {
+      "type": "string",
+      "default": "1000+"
+    },
+    "eventsPerYear": {
+      "type": "string",
+      "default": "5+"
+    }
+  }
+}
