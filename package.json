@@ -16,6 +16,7 @@
     "postinstall": "node patch-title.js"
   },
   "dependencies": {
+    "@ckeditor/strapi-plugin-ckeditor": "^1.1.2",
     "@strapi/database": "5.51.2",
     "@strapi/plugin-cloud": "5.51.2",
     "@strapi/plugin-users-permissions": "5.51.2",
