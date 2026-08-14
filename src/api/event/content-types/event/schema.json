@@ -20,12 +20,28 @@
       "type": "string"
     },
     "desc": {
-      "type": "customField",
-      "customField": "plugin::ckeditor5.CKEditor",
-      "options": {
-        "output": "HTML",
-        "preset": "standard"
-      }
+      "type": "richtext"
+    },
+    "fontSize": {
+      "type": "enumeration",
+      "enum": [
+        "14px",
+        "16px",
+        "18px",
+        "20px",
+        "22px"
+      ],
+      "default": "16px"
+    },
+    "fontFamily": {
+      "type": "enumeration",
+      "enum": [
+        "Inter",
+        "Roboto",
+        "Times New Roman",
+        "Arial"
+      ],
+      "default": "Inter"
     },
     "image": {
       "type": "media",
